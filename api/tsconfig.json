@@ -13,7 +13,9 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@infra/*": ["infra/*"]
+      "@infra/*": ["infra/*"],
+      "@entities/*": ["entities/*"],
+      "@domain/*": ["domain/*"]
     }
   }
 }

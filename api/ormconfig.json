@@ -7,8 +7,8 @@
   "port": 5432,
   "database": "githubstars",
   "entities": ["./src/entities/**/*.ts"],
-  "migrations": ["./src/infra/http/typeorm/migrations/*.ts"],
+  "migrations": ["./src/infra/typeorm/migrations/*.ts"],
   "cli": {
-    "migrationsDir": "./src/infra/http/typeorm/migrations"
+    "migrationsDir": "./src/infra/typeorm/migrations"
   }
 }
