@@ -1,5 +1,5 @@
-import IUser from "@domain/entities/IUser";
-import IRepository from "@domain/entities/IRepository";
+import IUser from '@domain/entities/IUser';
+import IRepository from '@domain/entities/IRepository';
 
 export default interface IFavorite {
   id: string;

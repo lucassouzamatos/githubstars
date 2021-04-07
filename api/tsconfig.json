@@ -3,19 +3,24 @@
     "target": "es5",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./src",
     "strict": true,
     "allowJs": true,
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@infra/*": ["infra/*"],
       "@entities/*": ["entities/*"],
-      "@domain/*": ["domain/*"]
-    }
-  }
+      "@domain/*": ["domain/*"],
+      "@controllers/*": ["controllers/*"],
+      "@services/*": ["services/*"],
+      "@providers/*": ["providers/*"],
+      "@tests/*": ["tests/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["node_modules", "./dist"]
 }

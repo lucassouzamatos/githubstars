@@ -1,4 +1,4 @@
-import IFavorite from "@domain/entities/IFavorite";
+import IFavorite from '@domain/entities/IFavorite';
 
 export default interface ITag {
   id: string;

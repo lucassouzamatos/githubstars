@@ -9,7 +9,7 @@ const getConnection = async (): Promise<Connection> => {
         process.env.NODE_ENV === 'test'
           ? `${defaultOptions.database}_tests`
           : defaultOptions.database,
-    }),
+    })
   );
 };
 

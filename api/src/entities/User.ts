@@ -6,15 +6,15 @@ import {
   PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
+} from 'typeorm';
 
-import Favorite from "@entities/Favorite";
+import Favorite from '@entities/Favorite';
 
-import IUser from "@domain/entities/IUser";
+import IUser from '@domain/entities/IUser';
 
-@Entity("users")
+@Entity('users')
 export default class User implements IUser {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()

@@ -6,22 +6,22 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
+} from 'typeorm';
 
-import Favorite from "@entities/Favorite";
+import Favorite from '@entities/Favorite';
 
-import ITag from "@domain/entities/ITag";
+import ITag from '@domain/entities/ITag';
 
-@Entity("tags")
+@Entity('tags')
 export default class Tag implements ITag {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   name: string;
 
   @ManyToOne(() => Favorite, (favorite) => favorite.tags)
-  @JoinColumn({ name: "favorite_id", referencedColumnName: "id" })
+  @JoinColumn({ name: 'favorite_id', referencedColumnName: 'id' })
   favorite: Favorite;
 
   @CreateDateColumn()

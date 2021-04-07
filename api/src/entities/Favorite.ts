@@ -7,25 +7,25 @@ import {
   UpdateDateColumn,
   JoinColumn,
   JoinTable,
-} from "typeorm";
+} from 'typeorm';
 
-import User from "@entities/User";
-import Repository from "@entities/Repository";
-import Tag from "@entities/Tag";
+import User from '@entities/User';
+import Repository from '@entities/Repository';
+import Tag from '@entities/Tag';
 
-import IFavorite from "@domain/entities/IFavorite";
+import IFavorite from '@domain/entities/IFavorite';
 
-@Entity("favorites")
+@Entity('favorites')
 export default class Favorite implements IFavorite {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @ManyToOne(() => User, (user) => user.favorites)
-  @JoinColumn({ name: "user_id", referencedColumnName: "id" })
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   user: User;
 
   @ManyToOne(() => Repository, (repository) => repository.favorites)
-  @JoinColumn({ name: "repository_id", referencedColumnName: "id" })
+  @JoinColumn({ name: 'repository_id', referencedColumnName: 'id' })
   repository: Repository;
 
   @OneToMany(() => Tag, (tag) => tag.favorite)

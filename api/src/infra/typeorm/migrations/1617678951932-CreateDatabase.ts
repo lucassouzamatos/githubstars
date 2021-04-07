@@ -1,9 +1,8 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class CreateDatabase1617678951932 implements MigrationInterface {
-
-    public async up(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.query(`
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(`
         DO
         $do$
         BEGIN
@@ -16,10 +15,8 @@ export class CreateDatabase1617678951932 implements MigrationInterface {
         END
         $do$;
       `);
-      await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
-    }
+    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-    }
-
+  public async down(queryRunner: QueryRunner): Promise<void> {}
 }

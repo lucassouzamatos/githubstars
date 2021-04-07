@@ -6,15 +6,15 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
+} from 'typeorm';
 
-import Favorite from "@entities/Favorite";
+import Favorite from '@entities/Favorite';
 
-import IRepository from "@domain/entities/IRepository";
+import IRepository from '@domain/entities/IRepository';
 
-@Entity("repositories")
+@Entity('repositories')
 export default class Repository implements IRepository {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
