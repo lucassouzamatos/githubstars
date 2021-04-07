@@ -1,4 +1,4 @@
 /*.js
 node_modules
 dist
-src/infra/typeorm/database
+src/infra/typeorm/migrations

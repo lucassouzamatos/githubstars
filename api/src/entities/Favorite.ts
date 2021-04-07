@@ -6,7 +6,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   JoinColumn,
-  JoinTable,
 } from 'typeorm';
 
 import User from '@entities/User';
