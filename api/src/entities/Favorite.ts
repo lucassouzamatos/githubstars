@@ -28,7 +28,7 @@ export default class Favorite implements IFavorite {
   repository: Repository;
 
   @OneToMany(() => Tag, (tag) => tag.favorite)
-  tags: Tag[];
+  tags?: Tag[];
 
   @CreateDateColumn()
   created_at: Date;

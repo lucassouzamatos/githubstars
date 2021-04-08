@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import faker from 'faker';
 
 import FindGithubProvider from '@providers/FindGithubProvider';
@@ -12,50 +11,53 @@ import {
   FakeUser,
 } from '@tests/factory/faker';
 
-const findGithubProvider = new FindGithubProvider();
-
 jest.mock('axios');
 
-beforeEach(() => {
-  AxiosMock.clearMock();
-});
+describe('FindGithubProvider', () => {
+  let findGithubProvider: FindGithubProvider;
 
-it('should call api to get starred', async () => {
-  const fakeGithubRepository = FakeGithubRepository();
-  const fakeRepository = FakeRepository({
-    github_id: fakeGithubRepository.id,
-    name: fakeGithubRepository.full_name,
-    description: fakeGithubRepository.description,
-    url: fakeGithubRepository.html_url,
-    language: fakeGithubRepository.language,
+  beforeEach(() => {
+    findGithubProvider = new FindGithubProvider();
+    AxiosMock.clearMock();
   });
 
-  const mockedResponse = [fakeGithubRepository];
-  const assertionResponse = {
-    data: [fakeRepository],
-  };
+  it('should call api to get starred', async () => {
+    const fakeGithubRepository = FakeGithubRepository();
+    const fakeRepository = FakeRepository({
+      github_id: fakeGithubRepository.id,
+      name: fakeGithubRepository.full_name,
+      description: fakeGithubRepository.description,
+      url: fakeGithubRepository.html_url,
+      language: fakeGithubRepository.language,
+    });
 
-  AxiosMock.request(mockedResponse);
+    const mockedResponse = [fakeGithubRepository];
+    const assertionResponse = {
+      data: [fakeRepository],
+    };
 
-  const starred = await findGithubProvider.starsFromUsername(
-    faker.internet.userName()
-  );
+    AxiosMock.request(mockedResponse);
 
-  expect(starred).toMatchObject(assertionResponse);
-});
+    const starred = await findGithubProvider.starsFromUsername(
+      faker.internet.userName()
+    );
 
-it('should call api to get user details', async () => {
-  const login = faker.internet.userName();
-  const fakeGithubUser = FakeGithubUser({ login });
-  const fakeUser = FakeUser({ login, github_id: fakeGithubUser.id });
+    expect(starred).toMatchObject(assertionResponse);
+  });
 
-  AxiosMock.request<IGithubUser>(fakeGithubUser);
+  it('should call api to get user details', async () => {
+    const login = faker.internet.userName();
+    const fakeGithubUser = FakeGithubUser({ login });
+    const fakeUser = FakeUser({ login, github_id: fakeGithubUser.id });
 
-  const starred = await findGithubProvider.detailsFromUsername(login);
+    AxiosMock.request<IGithubUser>(fakeGithubUser);
 
-  const assertionReponse = {
-    data: fakeUser,
-  };
+    const starred = await findGithubProvider.detailsFromUsername(login);
 
-  expect(starred).toMatchObject(assertionReponse);
+    const assertionReponse = {
+      data: fakeUser,
+    };
+
+    expect(starred).toMatchObject(assertionReponse);
+  });
 });
