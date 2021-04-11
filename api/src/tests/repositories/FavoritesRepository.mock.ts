@@ -3,6 +3,7 @@ import Favorite from '@entities/Favorite';
 import IRepository from '@domain/entities/IRepository';
 import IUser from '@domain/entities/IUser';
 import { PaginatedResponse } from '@domain/repositories/IRepository';
+import { FakeFavorite } from '@tests/factory/faker';
 
 export default class FavoritesRepository implements IFavoritesRepository {
   result: Favorite[] = [];
@@ -13,10 +14,7 @@ export default class FavoritesRepository implements IFavoritesRepository {
   ): Favorite[] {
     return repositories.map(
       (repository: IRepository) =>
-        ({
-          user,
-          repository,
-        } as Favorite)
+        FakeFavorite({ user, repository }) as Favorite
     );
   }
 

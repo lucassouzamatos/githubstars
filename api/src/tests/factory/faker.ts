@@ -16,6 +16,7 @@ export const FakeGithubRepository = (): IGithubRepository => ({
 });
 
 interface FakeRepositoryParams {
+  id?: string;
   github_id?: string;
   name?: string;
   description?: string;
@@ -24,6 +25,7 @@ interface FakeRepositoryParams {
 }
 
 export const FakeRepository = (params?: FakeRepositoryParams): IRepository => ({
+  id: params?.id ?? faker.datatype.uuid(),
   name: params?.name ?? faker.random.word(),
   github_id: params?.github_id ?? faker.datatype.uuid(),
   description: params?.description ?? faker.random.words(),
@@ -41,21 +43,25 @@ export const FakeGithubUser = (params?: FakeGithubUserParams): IGithubUser => ({
 });
 
 interface FakeUserParams {
+  id?: string;
   login?: string;
   github_id?: string;
 }
 
 export const FakeUser = (params?: FakeUserParams): IUser => ({
+  id: faker.datatype.uuid(),
   username: params?.login ?? faker.internet.userName(),
   github_id: params?.github_id ?? faker.datatype.uuid(),
 });
 
 interface FakeFavoriteParams {
+  id?: string;
   user?: IUser;
   repository?: IRepository;
 }
 
 export const FakeFavorite = (params?: FakeFavoriteParams): IFavorite => ({
+  id: faker.datatype.uuid(),
   user: params?.user ?? FakeUser(),
   repository: params?.repository ?? FakeRepository(),
 });

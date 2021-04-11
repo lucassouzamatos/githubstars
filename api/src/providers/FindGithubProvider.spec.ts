@@ -32,9 +32,6 @@ describe('FindGithubProvider', () => {
     });
 
     const mockedResponse = [fakeGithubRepository];
-    const assertionResponse = {
-      data: [fakeRepository],
-    };
 
     AxiosMock.request(mockedResponse);
 
@@ -42,7 +39,16 @@ describe('FindGithubProvider', () => {
       faker.internet.userName()
     );
 
-    expect(starred).toMatchObject(assertionResponse);
+    expect(starred.data.length).toEqual(1);
+    expect(starred.data[0]).toEqual(
+      jasmine.objectContaining({
+        github_id: fakeRepository.github_id,
+        name: fakeRepository.name,
+        description: fakeRepository.description,
+        url: fakeRepository.url,
+        language: fakeRepository.language,
+      })
+    );
   });
 
   it('should call api to get user details', async () => {
@@ -52,12 +58,13 @@ describe('FindGithubProvider', () => {
 
     AxiosMock.request<IGithubUser>(fakeGithubUser);
 
-    const starred = await findGithubProvider.detailsFromUsername(login);
+    const details = await findGithubProvider.detailsFromUsername(login);
 
-    const assertionReponse = {
-      data: fakeUser,
-    };
-
-    expect(starred).toMatchObject(assertionReponse);
+    expect(details.data).toEqual(
+      jasmine.objectContaining({
+        username: fakeUser.username,
+        github_id: fakeUser.github_id,
+      })
+    );
   });
 });
