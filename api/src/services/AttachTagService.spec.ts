@@ -29,6 +29,7 @@ describe('AttachTagService', () => {
     await attachTagService.execute({
       favorite_id: favorites[0].id,
       tags: 'test1, test2',
+      user_id: 'userid',
     });
 
     expect(tagsRepository.attach).toBeCalledWith(
@@ -42,6 +43,7 @@ describe('AttachTagService', () => {
       attachTagService.execute({
         favorite_id: 'favorite-fake',
         tags: 'test1, test2',
+        user_id: 'userid',
       })
     ).rejects.toThrow('The favorite specified not exists');
   });

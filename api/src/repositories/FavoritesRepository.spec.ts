@@ -90,7 +90,7 @@ describe('RepositoriesRepository', () => {
     const fakeFavorite = FakeFavorite();
     repositoryMock.findOne.mockResolvedValue(fakeFavorite);
 
-    const favorite = await favoritesRepository.findById('uuidtest');
+    const favorite = await favoritesRepository.findById('uuidtest', 'uuiduser');
     expect(favorite).toMatchObject(fakeFavorite);
   });
 });

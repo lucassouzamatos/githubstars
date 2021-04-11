@@ -11,9 +11,9 @@ module.exports = {
     '.mock.ts',
     'domain',
     'infra/*',
+    'tests/*',
     'entities',
-    'tests/mocks',
-    'tests/factory',
+    'common/*',
   ],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/src/',

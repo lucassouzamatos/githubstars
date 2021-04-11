@@ -6,5 +6,5 @@ import Repository from '@domain/repositories/IRepository';
 
 export default interface IFavoritesRepository extends Repository<Favorite> {
   link(user: IUser, repositories: IRepository[]): Promise<Favorite[]>;
-  findById(id: string): Promise<Favorite | undefined>;
+  findById(id: string, user_id: string): Promise<Favorite | undefined>;
 }

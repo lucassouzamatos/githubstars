@@ -79,9 +79,13 @@ export default class FavoritesRepository implements IFavoritesRepository {
     } as PaginatedResponse<Favorite>;
   }
 
-  public async findById(id: string): Promise<Favorite | undefined> {
+  public async findById(
+    id: string,
+    user: string
+  ): Promise<Favorite | undefined> {
     const query = await this.repository.findOne({
-      where: { id },
+      where: { id, user },
+      relations: ['tags', 'repository'],
     });
 
     return query as Favorite;

@@ -40,6 +40,7 @@ export default class TagsRepository implements ITagsRepository {
       .execute();
 
     const created = query.generatedMaps as Tag[];
+
     await this.detach(created, favorite);
     return created;
   }

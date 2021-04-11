@@ -11,15 +11,19 @@ class AxiosMock {
     this.mockedAxios.request.mockImplementation(() => Promise.resolve());
   }
 
-  public request<T>(response: T): void {
-    this.mockedAxios.request.mockImplementation((data: AxiosRequestConfig) => {
-      return Promise.resolve({
-        data: (data?.transformResponse as AxiosTransformer[]).reduce(
-          (acc, fn) => fn(acc),
-          response
-        ),
-      });
-    });
+  public request<T>(response: T): AxiosMock {
+    this.mockedAxios.request.mockImplementationOnce(
+      (data: AxiosRequestConfig) => {
+        return Promise.resolve({
+          data: (data?.transformResponse as AxiosTransformer[]).reduce(
+            (acc, fn) => fn(acc),
+            response
+          ),
+        });
+      }
+    );
+
+    return this;
   }
 }
 
