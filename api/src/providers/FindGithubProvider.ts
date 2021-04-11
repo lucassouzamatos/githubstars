@@ -9,7 +9,7 @@ import GithubUser from '@domain/github/IGithubUser';
 
 @injectable()
 export default class FindGithubProvider implements IFindGithubProvider {
-  constructor(private baseUrl = 'https://api.github.com') {}
+  baseUrl = process.env.GITHUB_API;
 
   private static transformRepository(
     response: GithubRepository[]

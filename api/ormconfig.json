@@ -8,6 +8,7 @@
   "database": "githubstars",
   "entities": ["./src/entities/**/*.ts"],
   "migrations": ["./src/infra/typeorm/migrations/*.ts"],
+  "migrationsRun": true,
   "cli": {
     "migrationsDir": "./src/infra/typeorm/migrations"
   }

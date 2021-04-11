@@ -4,6 +4,7 @@ import IGithubRepository from '@domain/github/IGithubRepository';
 import IGithubUser from '@domain/github/IGithubUser';
 import IUser from '@domain/entities/IUser';
 import IRepository from '@domain/entities/IRepository';
+import IFavorite from '@domain/entities/IFavorite';
 
 export const FakeGithubRepository = (): IGithubRepository => ({
   id: faker.datatype.uuid(),
@@ -47,4 +48,14 @@ interface FakeUserParams {
 export const FakeUser = (params?: FakeUserParams): IUser => ({
   username: params?.login ?? faker.internet.userName(),
   github_id: params?.github_id ?? faker.datatype.uuid(),
+});
+
+interface FakeFavoriteParams {
+  user?: IUser;
+  repository?: IRepository;
+}
+
+export const FakeFavorite = (params?: FakeFavoriteParams): IFavorite => ({
+  user: params?.user ?? FakeUser(),
+  repository: params?.repository ?? FakeRepository(),
 });

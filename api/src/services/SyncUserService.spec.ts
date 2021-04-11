@@ -40,4 +40,10 @@ describe('SyncUserService', () => {
 
     expect(created?.username).toBe(username);
   });
+
+  it('should throw error if username is undefined', async () => {
+    await expect(syncUserService.execute({})).rejects.toThrow(
+      'The username must be defined'
+    );
+  });
 });

@@ -10,7 +10,7 @@ import User from '@entities/User';
 import IRepository from '@domain/entities/IRepository';
 
 interface IParams {
-  username: string | undefined;
+  username?: string;
 }
 
 @injectable()

@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import ERepository from '@entities/Repository';
+import IRepository from '@domain/entities/IRepository';
 import IRepositoriesRepository from '@domain/repositories/IRepositoriesRepository';
 
 export default class RepositoriesRepository implements IRepositoriesRepository {
@@ -10,7 +11,7 @@ export default class RepositoriesRepository implements IRepositoriesRepository {
     this.repository = getRepository(ERepository);
   }
 
-  public async createMany(repositories: ERepository[]): Promise<ERepository[]> {
+  public async createMany(repositories: IRepository[]): Promise<ERepository[]> {
     const query = await this.repository
       .createQueryBuilder()
       .insert()

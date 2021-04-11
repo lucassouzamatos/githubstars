@@ -64,12 +64,12 @@ export default class FavoritesRepository implements IFavoritesRepository {
   }
 
   public async getPaginated(
-    where: Record<string, unknown>,
-    params: PaginationParams
+    where?: Record<string, unknown>,
+    params?: PaginationParams
   ): Promise<PaginatedResponse<Favorite>> {
     const query = await this.repository.find({
-      skip: params?.skip,
-      take: params?.take,
+      skip: params?.skip ?? 0,
+      take: params?.take ?? 10,
       where,
       relations: ['tags', 'repository'],
     });

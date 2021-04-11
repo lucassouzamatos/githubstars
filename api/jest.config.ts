@@ -6,6 +6,15 @@ module.exports = {
   collectCoverageFrom: ['**/src/**'],
   coverageDirectory: 'coverage',
   coverageReporters: ['text-summary', 'lcov'],
+  coveragePathIgnorePatterns: [
+    'node_modules',
+    '.mock.ts',
+    'domain',
+    'infra/*',
+    'entities',
+    'tests/mocks',
+    'tests/factory',
+  ],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/src/',
   }),

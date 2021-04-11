@@ -1,6 +1,6 @@
 import Tag from '@entities/Tag';
-import Favorite from '@entities/Favorite';
+import IFavorite from '@domain/entities/IFavorite';
 
 export default interface ITagsRepository {
-  attach(tags: string[], favorite: Favorite): Promise<Tag[]>;
+  attach(tags: string[], favorite: IFavorite): Promise<Tag[]>;
 }

@@ -3,7 +3,7 @@ import faker from 'faker';
 import FindGithubProvider from '@providers/FindGithubProvider';
 import IGithubUser from '@domain/github/IGithubUser';
 
-import AxiosMock from '@tests/factory/axios';
+import AxiosMock from '@tests/mocks/axios';
 import {
   FakeGithubRepository,
   FakeRepository,
