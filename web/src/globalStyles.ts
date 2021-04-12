@@ -43,6 +43,22 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   
+  input {
+    font: inherit;
+  }
+
+  button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px solid #f33363;
+    }
+  }
+
   html, body, #root {
     min-height: 100vh;
   }
