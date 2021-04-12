@@ -32,14 +32,16 @@
         "tsx": "never"
       }
     ],
-    "@typescript-eslint/camelcase": "off",
+    "camelcase": "off",
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-useless-constructor": "off"
   },
   "settings": {
     "import/resolver": {
       "typescript": {}
     }
-  },
-  "compilerOptions": {
   }
 }
