@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { border, BorderProps } from 'styled-system';
+import { border, BorderProps, width, WidthProps } from 'styled-system';
 import { outline, OutlineProps } from 'components/system';
 
-type InputProps = BorderProps & OutlineProps;
+type InputProps = BorderProps & OutlineProps & WidthProps;
 
 export const Input = styled.input<InputProps>`
-  width: 100%;
   height: 43px;
   border-radius: 4px;
   font-weight: bold;
@@ -13,7 +12,8 @@ export const Input = styled.input<InputProps>`
   padding: 10px 15px;
   ${outline}
   ${border}
-  
+  ${width}
+
   ::placeholder {
     color: #9c9c9c;
   }

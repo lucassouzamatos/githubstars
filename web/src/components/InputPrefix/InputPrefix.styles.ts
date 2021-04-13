@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { border, BorderProps } from 'styled-system';
+import { border, BorderProps, width, WidthProps } from 'styled-system';
 
-type LabelProps = BorderProps;
+type LabelProps = BorderProps & WidthProps;
 
 export const Label = styled.label<LabelProps>`
   display: flex;
@@ -12,5 +12,6 @@ export const Label = styled.label<LabelProps>`
   border-radius: 4px;
   align-items: center;
   color: #9c9c9c;
+  ${width}
   ${border};
 `;

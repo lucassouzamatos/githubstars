@@ -24,8 +24,12 @@ export default function Main() {
       </WrapperText>
 
       <WrapperForm>
-        <InputPrefix prefix="https://github.com/" placeholder="test" />
-        <Button text="get repositories" />
+        <InputPrefix
+          width="100%"
+          prefix="https://github.com/"
+          placeholder="test"
+        />
+        <Button next width="100%" text="get repositories" />
       </WrapperForm>
     </Container>
   );

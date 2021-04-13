@@ -1,7 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { width, WidthProps } from 'styled-system';
 
-export const Wrapper = styled.button`
-  width: 100%;
+type WrapperProps = WidthProps & {
+  next?: boolean;
+};
+
+export const Wrapper = styled.button<WrapperProps>`
+  ${width}
   height: 43px;
   background: #000000;
   border: none;
@@ -12,14 +17,18 @@ export const Wrapper = styled.button`
   font-size: 18px;
   text-align: center;
 
-  &:after {
-    margin-left: 10px;
-    display: inline-block;
-    content: '';
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-left: 10px solid #ffffff;
-    border-bottom: 5px solid transparent;
-  }
+  ${(props) =>
+    props.next &&
+    css`
+      &:after {
+        margin-left: 10px;
+        display: inline-block;
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-left: 10px solid #ffffff;
+        border-bottom: 5px solid transparent;
+      }
+    `}
 `;
