@@ -3,6 +3,15 @@ import styled from 'styled-components';
 export const TableWrapper = styled.table`
   border-collapse: collapse;
 
+  td > button {
+    font-weight: 800;
+    font-size: 18px;
+
+    &:hover {
+      border-bottom: 3px solid black;
+    }
+  }
+
   td,
   th {
     text-align: left;

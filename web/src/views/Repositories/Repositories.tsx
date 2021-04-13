@@ -1,13 +1,27 @@
-import { Button, InputSearch, Table } from 'components';
-import { Container, Logo, Header, ContentWrapper } from './Repositories.styles';
+import { Button, InputSearch, Table, Modal, Tag } from 'components';
+import { useState } from 'react';
+import {
+  Container,
+  Logo,
+  Header,
+  ContentWrapper,
+  TagWrapper,
+} from './Repositories.styles';
 
 export default function Repositories() {
+  const [modal, setModal] = useState({ opened: false });
+
   return (
     <Container>
       <Header>
         <Logo />
         <Button text="home" />
       </Header>
+
+      <Modal
+        onClose={() => setModal({ opened: false })}
+        opened={modal.opened}
+      />
 
       <ContentWrapper>
         <InputSearch placeholder="search by tags" />
@@ -18,6 +32,7 @@ export default function Repositories() {
               <th>description</th>
               <th>language</th>
               <th>tags</th>
+              <th>options</th>
             </tr>
           </thead>
           <tbody>
@@ -31,7 +46,18 @@ export default function Repositories() {
                     managingcontainerized applications across multiple hosts
                   </td>
                   <td>kubernetes</td>
-                  <td>tags</td>
+                  <td>
+                    <TagWrapper>
+                      <Tag>test 🎉</Tag>
+                      <Tag>test 🎉</Tag>
+                      <Tag>test 🎉</Tag>
+                    </TagWrapper>
+                  </td>
+                  <td>
+                    <button onClick={() => setModal({ opened: true })}>
+                      edit
+                    </button>
+                  </td>
                 </tr>
               ))}
           </tbody>

@@ -28,3 +28,14 @@ export const ContentWrapper = styled.div`
     margin-bottom: 70px;
   }
 `;
+
+export const TagWrapper = styled.div`
+  display: flex;
+  max-width: 400px;
+  flex-wrap: wrap;
+
+  > div {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+`;
