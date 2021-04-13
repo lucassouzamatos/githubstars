@@ -21,6 +21,7 @@ export const TableWrapper = styled.table`
   th {
     border-bottom: 2px solid;
     border-top: 2px solid;
+    font-weight: 800;
   }
 
   td:nth-child(odd),

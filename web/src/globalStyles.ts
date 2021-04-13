@@ -63,7 +63,7 @@ export default createGlobalStyle`
     min-height: 100vh;
   }
 
-  body {
+  * {
     font: 14px 'Metropolis', sans-serif;
   }
 `;

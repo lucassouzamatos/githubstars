@@ -27,7 +27,7 @@ export default function Main() {
         <InputPrefix
           width="100%"
           prefix="https://github.com/"
-          placeholder="test"
+          placeholder="username"
         />
         <Button next width="100%" text="get repositories" />
       </WrapperForm>

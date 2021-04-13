@@ -14,4 +14,8 @@ export const Label = styled.label<LabelProps>`
   color: #9c9c9c;
   ${width}
   ${border};
+
+  > input {
+    padding-left: 0;
+  }
 `;
