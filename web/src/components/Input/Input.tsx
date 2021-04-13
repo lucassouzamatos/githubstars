@@ -8,6 +8,7 @@ interface InputProps {
   border?: string;
   outline?: string;
   width?: string;
+  value?: string;
 }
 
 export default ({
@@ -18,9 +19,11 @@ export default ({
   onChange,
   onFocus,
   onBlur,
+  value,
 }: InputProps) => {
   return (
     <Input
+      value={value}
       onFocus={onFocus}
       onBlur={onBlur}
       onChange={onChange}

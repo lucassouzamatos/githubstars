@@ -19,6 +19,7 @@ export const SuggestionWrapper = styled.div<WidthProps>`
   background: #ffffff;
 
   > span {
+    cursor: context-menu;
     padding: 10px 17px;
     font-weight: 700;
     color: #9c9c9c;

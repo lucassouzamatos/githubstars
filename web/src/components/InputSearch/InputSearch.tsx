@@ -7,12 +7,19 @@ type InputSearchProps = {
   placeholder: string;
 };
 
+const suggestions = ['test', 'kubernetes', 'docker'];
+
 export default function InputSearch({ placeholder }: InputSearchProps) {
   const [value, setValue] = useState<string>();
   const [focused, setFocused] = useState<boolean>();
+  const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
 
   const debounceSearch = useRef(
-    lodash.throttle((debounceValue) => console.log(debounceValue), 1000)
+    lodash.throttle((debounceValue) => {
+      setCurrentSuggestions(
+        suggestions.filter((sug) => sug.includes(debounceValue))
+      );
+    }, 1000)
   );
 
   useEffect(() => debounceSearch.current(value), [value]);
@@ -27,6 +34,7 @@ export default function InputSearch({ placeholder }: InputSearchProps) {
     <Wrapper>
       <InputWrapper>
         <InputComponent
+          value={value}
           onBlur={() => setFocused(false)}
           onFocus={() => setFocused(true)}
           onChange={search}
@@ -36,13 +44,11 @@ export default function InputSearch({ placeholder }: InputSearchProps) {
         <Button text="search" />
       </InputWrapper>
 
-      {focused && (
+      {focused && Boolean(currentSuggestions.length) && (
         <SuggestionWrapper width="390px">
-          <span>sugestão</span>
-          <span>sugestão</span>
-          <span>sugestão</span>
-          <span>sugestão</span>
-          <span>sugestão</span>
+          {currentSuggestions.map((suggestion) => (
+            <span onClick={() => setValue(suggestion)}>{suggestion}</span>
+          ))}
         </SuggestionWrapper>
       )}
     </Wrapper>
