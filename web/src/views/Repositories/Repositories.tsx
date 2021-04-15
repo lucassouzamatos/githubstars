@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Button, InputSearch, Table, Modal, Tag } from 'components';
-import { useState } from 'react';
+import { useRepositories } from 'providers/RepositoriesDataProvider';
 import {
   Container,
   Logo,
@@ -10,6 +11,12 @@ import {
 
 export default function Repositories() {
   const [modal, setModal] = useState({ opened: false });
+
+  const repositories = useRepositories();
+
+  useEffect(() => {
+    console.log('repositories:', repositories);
+  }, [repositories]);
 
   return (
     <Container>

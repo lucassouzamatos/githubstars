@@ -3,12 +3,16 @@ import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from 'globalStyles';
 import Routes from 'routes';
 
+import { RepositoriesDataProvider } from 'providers/RepositoriesDataProvider';
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes />
-      <GlobalStyle />
-    </BrowserRouter>
+    <RepositoriesDataProvider>
+      <BrowserRouter>
+        <Routes />
+        <GlobalStyle />
+      </BrowserRouter>
+    </RepositoriesDataProvider>
   );
 }
 
