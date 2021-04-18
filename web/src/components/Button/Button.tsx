@@ -1,15 +1,16 @@
+import { InputHTMLAttributes } from 'react';
 import { Wrapper } from './Button.styles';
 
-interface ButtonProps {
+interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   text: string;
   type?: 'submit' | 'reset' | 'button';
   width?: string;
   next?: boolean;
 }
 
-const Button = ({ next, text, width, type }: ButtonProps) => {
+const Button = ({ next, text, width, type, ...props }: ButtonProps) => {
   return (
-    <Wrapper type={type} next={next} width={width}>
+    <Wrapper type={type} next={next} width={width} {...props}>
       {text}
     </Wrapper>
   );

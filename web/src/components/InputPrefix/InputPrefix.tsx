@@ -4,7 +4,7 @@ import { Label } from './InputPrefix.styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   prefix: string;
-  width: string;
+  width?: string;
 }
 
 const InputPrefix = (

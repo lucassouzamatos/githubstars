@@ -6,7 +6,10 @@ import {
   Action as RepositoriesAction,
 } from 'domain/store/repositories';
 
-import { State as AuthState, Action as AuthAction } from 'domain/store/auth';
+import {
+  State as AuthorizationState,
+  Action as AuthorizationAction,
+} from 'domain/store/auth';
 
 import {
   reducer as repositoriesReducer,
@@ -21,10 +24,10 @@ import { applySaga } from './applySaga';
 
 export type CombinedReducer = {
   repositories: RepositoriesState;
-  auth: AuthState;
+  auth: AuthorizationState;
 };
 
-export type CombinedAction = RepositoriesAction | AuthAction;
+export type CombinedAction = RepositoriesAction | AuthorizationAction;
 
 const createCombinedReducers = (): [
   CombinedReducer,
@@ -35,15 +38,14 @@ const createCombinedReducers = (): [
     RepositoriesAction
   >(repositoriesReducer, repositoriesDefaultState, 'repositories');
 
-  const [auth, authDispatch] = usePersistedReducer<AuthState, AuthAction>(
-    authReducer,
-    authDefaultState,
-    'auth'
-  );
+  const [auth, authDispatch] = usePersistedReducer<
+    AuthorizationState,
+    AuthorizationAction
+  >(authReducer, authDefaultState, 'auth');
 
   const dispatch = (action: CombinedAction) => {
     repositoriesDispatch(action as RepositoriesAction);
-    authDispatch(action as AuthAction);
+    authDispatch(action as AuthorizationAction);
   };
 
   return [
