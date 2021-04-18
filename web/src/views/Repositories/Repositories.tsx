@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, InputSearch, Table, Modal, Tag } from 'components';
-import { useRepositories } from 'providers/RepositoriesDataProvider';
+import { useStore } from 'providers/store/StoreProvider';
+
+import { Actions as RepositoriesActions } from 'store/ducks/repositories';
 import {
   Container,
   Logo,
@@ -11,12 +13,18 @@ import {
 
 export default function Repositories() {
   const [modal, setModal] = useState({ opened: false });
-
-  const repositories = useRepositories();
+  const { store, dispatch } = useStore();
 
   useEffect(() => {
-    console.log('repositories:', repositories);
-  }, [repositories]);
+    dispatch(
+      RepositoriesActions.add({
+        description: 'test',
+        name: 'test',
+        tags: ['wrtwe'],
+        language: 'test',
+      })
+    );
+  }, []);
 
   return (
     <Container>
@@ -43,30 +51,25 @@ export default function Repositories() {
             </tr>
           </thead>
           <tbody>
-            {Array(20)
-              .fill(0)
-              .map(() => (
-                <tr>
-                  <td>kubernetes</td>
-                  <td>
-                    Kubernetes, also known as K8s, is an open source system for
-                    managingcontainerized applications across multiple hosts
-                  </td>
-                  <td>kubernetes</td>
-                  <td>
-                    <TagWrapper>
-                      <Tag>test 🎉</Tag>
-                      <Tag>test 🎉</Tag>
-                      <Tag>test 🎉</Tag>
-                    </TagWrapper>
-                  </td>
-                  <td>
-                    <button onClick={() => setModal({ opened: true })}>
-                      edit
-                    </button>
-                  </td>
-                </tr>
-              ))}
+            {store.repositories.data.map((repository) => (
+              <tr>
+                <td>{repository.name}</td>
+                <td>{repository.description}</td>
+                <td>{repository.language}</td>
+                <td>
+                  <TagWrapper>
+                    {repository.tags.map((tag) => (
+                      <Tag>{tag}</Tag>
+                    ))}
+                  </TagWrapper>
+                </td>
+                <td>
+                  <button onClick={() => setModal({ opened: true })}>
+                    edit
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </ContentWrapper>

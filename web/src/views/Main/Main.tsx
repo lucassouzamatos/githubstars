@@ -1,4 +1,8 @@
 import { Button, InputPrefix } from 'components';
+import { useStore } from 'providers/store/StoreProvider';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { Actions as AuthActions } from 'store/ducks/auth';
 import {
   WrapperText,
   WrapperForm,
@@ -8,7 +12,18 @@ import {
   SecondaryText,
 } from './Main.styles';
 
+type FormData = {
+  username: string;
+};
+
 export default function Main() {
+  const { register, handleSubmit } = useForm<FormData>();
+  const { store, dispatch } = useStore();
+
+  const onSubmit = handleSubmit(({ username }) => {
+    dispatch(AuthActions.sync('username'));
+  });
+
   return (
     <Container>
       <WrapperText>
@@ -23,13 +38,14 @@ export default function Main() {
         </SecondaryText>
       </WrapperText>
 
-      <WrapperForm>
+      <WrapperForm onSubmit={onSubmit}>
         <InputPrefix
           width="100%"
           prefix="https://github.com/"
           placeholder="username"
+          {...register('username')}
         />
-        <Button next width="100%" text="get repositories" />
+        <Button type="submit" next width="100%" text="get repositories" />
       </WrapperForm>
     </Container>
   );

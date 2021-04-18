@@ -4,7 +4,7 @@ import { outline, OutlineProps } from 'components/system';
 
 type InputProps = BorderProps & OutlineProps & WidthProps;
 
-export const Input = styled.input<InputProps>`
+export const InputWrapper = styled.input<InputProps>`
   height: 43px;
   border-radius: 4px;
   font-weight: bold;

@@ -1,36 +1,30 @@
-import { Input } from './Input.styles';
+import { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
+import { InputWrapper } from './Input.styles';
 
-interface InputProps {
-  onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   border?: string;
   outline?: string;
   width?: string;
-  value?: string;
 }
 
-export default ({
-  outline = 'auto',
-  border = '2px solid #000000',
-  width,
-  placeholder,
-  onChange,
-  onFocus,
-  onBlur,
-  value,
-}: InputProps) => {
-  return (
-    <Input
-      value={value}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onChange={onChange}
-      width={width}
-      outline={outline}
-      border={border}
-      placeholder={placeholder}
-    />
-  );
-};
+const Input = (
+  {
+    outline = 'auto',
+    border = '2px solid #000000',
+    width,
+    value,
+    ...props
+  }: InputProps,
+  ref: ForwardedRef<HTMLInputElement>
+) => (
+  <InputWrapper
+    ref={ref}
+    value={value}
+    width={width}
+    outline={outline}
+    border={border}
+    {...props}
+  />
+);
+
+export default forwardRef<HTMLInputElement, InputProps>(Input);

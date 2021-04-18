@@ -11,6 +11,7 @@ const StoreContext = createContext<{
 }>({
   store: {
     repositories: { data: [] },
+    auth: { data: {} },
   },
   dispatch: () => {},
 });

@@ -40,7 +40,7 @@ export const Logo = styled.div`
   background-image: url(${LogoWhite});
 `;
 
-export const WrapperForm = styled.div`
+export const WrapperForm = styled.form`
   display: flex;
   width: 100%;
   flex-direction: column;
