@@ -1,0 +1,3 @@
+export function sync(payload, dispatch) {
+  // ...
+}
