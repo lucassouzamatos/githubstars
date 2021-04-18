@@ -24,9 +24,7 @@ export default function Modal({ opened, onClose }: ModalProps) {
     <Overlay>
       <Wrapper>
         <Header>
-          <Title>
-            editing <strong>kubernetes</strong>
-          </Title>
+          <Title>editing kubernetes</Title>
           <ButtonClose onClick={onClose} />
         </Header>
         <Description>

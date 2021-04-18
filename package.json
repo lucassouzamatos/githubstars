@@ -1,0 +1,8 @@
+{
+  "name": "githubstars-workspace",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
