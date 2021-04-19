@@ -1,7 +1,9 @@
 import { localCache } from 'adapters/cache';
 
-const token = () => {
-  return `Bearer ${localCache().get('auth')?.data?.token}`;
+const transformToken = (
+  token: string = localCache().get('auth')?.data?.token
+) => {
+  return `Bearer ${token}`;
 };
 
 const request = {
@@ -10,7 +12,7 @@ const request = {
       method: 'GET',
       headers: {
         'content-type': 'application/json;charset=UTF-8',
-        Authorization: token(),
+        Authorization: transformToken(),
       },
     });
   },
@@ -19,7 +21,7 @@ const request = {
       method: 'POST',
       headers: {
         'content-type': 'application/json;charset=UTF-8',
-        Authorization: token(),
+        Authorization: transformToken(),
       },
       body: JSON.stringify(body),
     });
