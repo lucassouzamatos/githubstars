@@ -4,9 +4,10 @@ const defaultState: State = {
   data: [],
 };
 
-const Types = {
+export const Types = {
   ADD: '@Repositories/ADD',
   SET: '@Repositories/SET',
+  GET: '@Repositories/GET',
 };
 
 function reducer(state = defaultState, action: Action): State {
@@ -31,6 +32,12 @@ const Actions = {
     return {
       type: Types.ADD,
       payload: { item },
+    };
+  },
+  get() {
+    return {
+      type: Types.GET,
+      payload: {},
     };
   },
   set(items: Item[]) {

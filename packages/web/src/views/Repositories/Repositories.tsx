@@ -16,14 +16,7 @@ export default function Repositories() {
   const { store, dispatch } = useStore();
 
   useEffect(() => {
-    dispatch(
-      RepositoriesActions.add({
-        description: 'test',
-        name: 'test',
-        tags: ['wrtwe'],
-        language: 'test',
-      })
-    );
+    dispatch(RepositoriesActions.get());
   }, []);
 
   return (
