@@ -11,7 +11,7 @@ export function usePersistedReducer<
   initialState: TypeState,
   key: string
 ): [S, React.Dispatch<A>] {
-  const storage = localCache('persisted@githubstars');
+  const storage = localCache();
 
   const [state, dispatch] = useReducer(
     reducer,

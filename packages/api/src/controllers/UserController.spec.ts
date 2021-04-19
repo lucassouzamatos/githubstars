@@ -30,7 +30,7 @@ describe('UserController', () => {
     AxiosMock.request(fakeGithubUser).request([fakeGithubRepository]);
 
     return request(app)
-      .post('/user/sync')
+      .post('/api/user/sync')
       .send({ username: fakeGithubUser.login })
       .expect(200)
       .then((response) => {

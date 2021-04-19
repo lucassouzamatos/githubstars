@@ -12,3 +12,7 @@ export const getConnection = async (): Promise<Connection> => {
     })
   );
 };
+
+if (process.env.NODE_ENV !== 'test') {
+  getConnection();
+}

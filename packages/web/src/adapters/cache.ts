@@ -1,4 +1,6 @@
-export function localCache(prefix: string) {
+export function localCache(
+  prefix: string = process.env.REACT_APP_STORAGE as string
+) {
   const localCacheKey = (key: string) => `${prefix}@${key}`;
 
   return {

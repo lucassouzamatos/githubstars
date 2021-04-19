@@ -30,13 +30,13 @@ describe('TagController', () => {
     AxiosMock.request(fakeGithubUser).request([fakeGithubRepository]);
 
     const sync = await request(app)
-      .post('/user/sync')
+      .post('/api/user/sync')
       .send({ username: fakeGithubUser.login });
 
     const { token } = sync.body;
 
     return request(app)
-      .post('/tags/attach')
+      .post('/api/tags/attach')
       .set('Authorization', `Bearer ${token}`)
       .send({
         favorite_id: faker.datatype.uuid(),
@@ -57,7 +57,7 @@ describe('TagController', () => {
     AxiosMock.request(fakeGithubUser).request([fakeGithubRepository]);
 
     const sync = await request(app)
-      .post('/user/sync')
+      .post('/api/user/sync')
       .send({ username: fakeGithubUser.login });
 
     const { token } = sync.body;
@@ -71,12 +71,12 @@ describe('TagController', () => {
     });
 
     const favorites = await request(app)
-      .get('/favorites')
+      .get('/api/favorites')
       .set('Authorization', `Bearer ${token}`)
       .send();
 
     return request(app)
-      .post('/tags/attach')
+      .post('/api/tags/attach')
       .set('Authorization', `Bearer ${token}`)
       .send({
         favorite_id: favorites.body.data[0].id,
@@ -97,13 +97,13 @@ describe('TagController', () => {
     AxiosMock.request(fakeGithubUser).request([fakeGithubRepository]);
 
     const sync = await request(app)
-      .post('/user/sync')
+      .post('/api/user/sync')
       .send({ username: fakeGithubUser.login });
 
     const { token } = sync.body;
 
     return request(app)
-      .post('/tags/attach')
+      .post('/api/tags/attach')
       .set('Authorization', `Bearer ${token}`)
       .expect(400)
       .then((response) => {
@@ -114,7 +114,7 @@ describe('TagController', () => {
 
   it('should throw a error if token is not defined', async () => {
     return request(app)
-      .post('/tags/attach')
+      .post('/api/tags/attach')
       .expect(401)
       .then((response) => {
         expect(response.body.message).toEqual('Authorization is missing');

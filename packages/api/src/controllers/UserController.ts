@@ -8,14 +8,17 @@ class UserController {
     request: Request,
     response: Response
   ): Promise<Response> {
-    const username = request.body.username as string;
+    try {
+      const username = request.body.username as string;
+      const syncUser = container.resolve(SyncUserService);
+      const token = await syncUser.execute({ username });
 
-    const syncUser = container.resolve(SyncUserService);
-    const token = await syncUser.execute({ username });
-
-    return response.json({
-      token,
-    });
+      return response.json({
+        token,
+      });
+    } catch (error) {
+      return response.error(error);
+    }
   }
 }
 

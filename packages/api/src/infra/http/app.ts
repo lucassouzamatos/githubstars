@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import '@infra/env';
 
 import express from 'express';
 
@@ -7,11 +8,12 @@ import { errors as celebrate } from 'celebrate';
 
 import { error, validate } from '@middlewares/error';
 import controller from '@middlewares/controller';
-import routes from '@infra/http/routes';
 
 import 'express-async-errors';
 import '@infra/container';
 import '@infra/typeorm';
+
+import routes from '@infra/http/routes';
 
 const app = express();
 

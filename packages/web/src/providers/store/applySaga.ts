@@ -6,7 +6,7 @@ export function applySaga<A extends TypeAction<unknown>>(
 ) {
   return (action: A) => {
     if (Object.keys(SagaActions).includes(action.type)) {
-      SagaActions[action.type](action, dispatch);
+      SagaActions[action.type](action.payload, dispatch);
     }
 
     dispatch(action);

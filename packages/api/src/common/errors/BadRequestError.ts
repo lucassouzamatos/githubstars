@@ -1,7 +1,7 @@
 import DefaultError from '@common/defaults/Error';
 
-export default class NotFoundError extends Error implements DefaultError {
-  readonly statusCode = 404;
+export default class BadRequestError extends Error implements DefaultError {
+  readonly statusCode = 400;
 
   constructor(message: string) {
     super(message);

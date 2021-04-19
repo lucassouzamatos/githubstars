@@ -29,7 +29,7 @@ describe('FavoriteController', () => {
     AxiosMock.request(fakeGithubUser).request([fakeGithubRepository]);
 
     const sync = await request(app)
-      .post('/user/sync')
+      .post('/api/user/sync')
       .send({ username: fakeGithubUser.login });
 
     const { token } = sync.body;
@@ -43,7 +43,7 @@ describe('FavoriteController', () => {
     });
 
     return request(app)
-      .get('/favorites')
+      .get('/api/favorites')
       .set('Authorization', `Bearer ${token}`)
       .expect(200)
       .then((response) => {
@@ -54,7 +54,7 @@ describe('FavoriteController', () => {
 
   it('should throw a error if token is not defined', async () => {
     return request(app)
-      .get('/favorites')
+      .get('/api/favorites')
       .expect(401)
       .then((response) => {
         expect(response.body.message).toEqual('Authorization is missing');
@@ -63,7 +63,7 @@ describe('FavoriteController', () => {
 
   it('should throw a error if token is wrong', async () => {
     return request(app)
-      .get('/favorites')
+      .get('/api/favorites')
       .set('Authorization', 'token')
       .expect(401)
       .then((response) => {

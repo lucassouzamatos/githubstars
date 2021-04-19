@@ -6,8 +6,8 @@ import FavoriteRouter from '@infra/http/routes/favorite';
 
 const routes = Router();
 
-routes.use('/user', UserRouter);
-routes.use('/tags', TagRouter);
-routes.use('/favorites', FavoriteRouter);
+routes.use('/api/user', UserRouter);
+routes.use('/api/tags', TagRouter);
+routes.use('/api/favorites', FavoriteRouter);
 
 export default routes;

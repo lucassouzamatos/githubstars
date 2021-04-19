@@ -1,6 +1,5 @@
-import { Button, InputPrefix } from 'components';
+import { Button, InputPrefix, ErrorMessage } from 'components';
 import { useStore } from 'providers/store/StoreProvider';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Actions as AuthActions } from 'store/ducks/auth';
 import {
@@ -21,7 +20,7 @@ export default function Main() {
   const { store, dispatch } = useStore();
 
   const onSubmit = handleSubmit(({ username }) => {
-    dispatch(AuthActions.sync('username'));
+    dispatch(AuthActions.sync(username));
   });
 
   return (
@@ -39,13 +38,19 @@ export default function Main() {
       </WrapperText>
 
       <WrapperForm onSubmit={onSubmit}>
+        {store.auth?.error && <ErrorMessage>{store.auth?.error}</ErrorMessage>}
         <InputPrefix
           width="100%"
           prefix="https://github.com/"
           placeholder="username"
           {...register('username')}
         />
-        <Button type="submit" next width="100%" text="get repositories" />
+        <Button
+          type="submit"
+          next
+          width="100%"
+          text={store.auth?.loading ? 'getting' : 'get repositories'}
+        />
       </WrapperForm>
     </Container>
   );

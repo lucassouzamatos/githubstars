@@ -17,7 +17,7 @@ export default class UsersRepository implements IUsersRepository {
       .insert()
       .into(User)
       .values(user)
-      .orUpdate({ conflict_target: ['username'] })
+      .orUpdate({ conflict_target: ['github_id'], overwrite: ['github_id'] })
       .returning('*')
       .execute();
 
