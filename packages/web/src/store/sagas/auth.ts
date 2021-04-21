@@ -1,4 +1,5 @@
 import { Actions as AuthActions } from 'store/ducks/auth';
+import { Actions as RepositoriesActions } from 'store/ducks/repositories';
 import request from 'adapters/request';
 
 export async function sync(payload, dispatch) {
@@ -19,4 +20,8 @@ export async function sync(payload, dispatch) {
   } catch (e) {
     dispatch(AuthActions.error('An error ocurred, try again.'));
   }
+}
+
+export async function logout(payload, dispatch) {
+  dispatch(RepositoriesActions.clear());
 }

@@ -11,6 +11,7 @@ export const Types = {
   INSERT_TAGS: '@Repositories/INSERT_TAGS',
   REMOVE_TAG: '@Repositories/REMOVE_TAG',
   UPDATE: '@Repositories/UPDATE',
+  CLEAR: '@Repositories/CLEAR',
 };
 
 function reducer(state = defaultState, action: Action): State {
@@ -32,6 +33,8 @@ function reducer(state = defaultState, action: Action): State {
           item.id === action.payload.item?.id ? action.payload.item : item
         ),
       };
+    case Types.CLEAR:
+      return defaultState;
     default:
       return state;
   }
@@ -42,6 +45,12 @@ const Actions = {
     return {
       type: Types.ADD,
       payload: { item },
+    };
+  },
+  clear() {
+    return {
+      type: Types.CLEAR,
+      payload: {},
     };
   },
   get() {

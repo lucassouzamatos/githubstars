@@ -26,8 +26,9 @@ export default function Repositories() {
   const [filter, setFilter] = useState<string>();
 
   useEffect(() => {
-    if (!store.repositories.data.length && store.auth.data?.token)
+    if (store.auth.data?.token) {
       dispatch(RepositoriesActions.get());
+    }
   }, []);
 
   useEffect(() => {

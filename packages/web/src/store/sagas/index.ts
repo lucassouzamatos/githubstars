@@ -5,6 +5,7 @@ import * as AuthEffects from 'store/sagas/auth';
 import * as RepositoriesEffects from 'store/sagas/repositories';
 
 export default {
+  [AuthTypes.LOGOUT]: AuthEffects.logout,
   [AuthTypes.SYNC]: AuthEffects.sync,
   [RepositoryTypes.GET]: RepositoriesEffects.get,
   [RepositoryTypes.INSERT_TAGS]: RepositoriesEffects.insertTags,
