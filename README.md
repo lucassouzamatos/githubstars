@@ -5,6 +5,7 @@ This project is a challenge for selective process to Brainn company. The specifi
 
 ## Documentation sections
 [Front-end](#front-end)
+[Back-end](#back-end)
 
 ## Installation
 You should start directly by yarn or by docker.
@@ -80,3 +81,106 @@ With the modal of tags is possible to define the tags for the link, it must be i
 
 ### Header
 By header, it's possible back to home, and then the user is unsynchronized and after this, is possible to synchronize again with any user. An example must be viewed [here](assets/unsync.gif).
+
+# Back-end
+## Overview
+The back-end was designed by the [model entities](assets/model-entities.png). 
+The structure code the most part was architected following [Clean Arquitecture by Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+
+If you wanna play with API in your machine, the postman collection is available [here](assets/collection.json).
+
+## Requests structure
+### Sync
+For the access API and get repositories and link tags in user, it's necessary sync with your Github username, and then a token will be provided for use in the next requests.
+
+```no-highlight
+POST {{ ApiUrl }}/api/user/sync
+```
+#### Request body
+```json
+{
+    "username": "github-username"
+}
+```
+    
+#### Response
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTkwNDQ0OTIsInN1YiI6IjdkYmI0ZmIzLTBhMDAtNDgzZi04MmNlLTNlNTVhWY0ZDVmZiJ9.UUuCfMVTBUwQyNy4rR4GxHf84it5tnKbnJ7nBIclSEI"
+}
+```
+
+### Favorites
+Get repositories starred by user synchronized. The authorization token must be defined in headers.
+
+```no-highlight
+GET {{ ApiUrl }}/api/favorites
+```
+
+#### Response
+```json
+{
+    "data": [
+        {
+            "id": "105b8967-7c1a-4e73-8cf2-4b7f3a7e20bc",
+            "created_at": "2021-04-21T01:57:47.276Z",
+            "updated_at": "2021-04-21T01:57:47.276Z",
+            "tags": [],
+            "repository": {
+                "id": "30565db7-52e9-4423-be0b-7bb9d5fe3b61",
+                "github_id": "172471552",
+                "name": "aliyr/Nodejs-Developer-Roadmap",
+                "description": "A Developer Roadmap to becoming a Node.js developer in 2019",
+                "language": null,
+                "url": "https://github.com/aliyr/Nodejs-Developer-Roadmap",
+                "created_at": "2021-04-19T03:41:48.717Z",
+                "updated_at": "2021-04-19T03:41:48.717Z"
+            }
+        }
+    ]
+}
+```
+
+### Attach tag
+Attach tags in repositories starred by user synchronized, the tags specified in the body should be sent with comma separation. If you wanna remove a tag, just no send with the rest of tags, only specified tags are maintained the rest are detached. The authorization token must be defined in headers.
+
+```no-highlight
+POST {{ ApiUrl }}/api/tags/attach
+```
+
+### Request body
+```json
+{
+    "favorite_id": "105b8967-7c1a-4e73-8cf2-4b7f3a7e20bc",
+    "tags": "tag-1"
+}
+```
+
+### Response
+```json
+{
+    "favorite": {
+        "id": "105b8967-7c1a-4e73-8cf2-4b7f3a7e20bc",
+        "created_at": "2021-04-21T01:57:47.276Z",
+        "updated_at": "2021-04-21T01:57:47.276Z",
+        "tags": [
+            {
+                "id": "e69bebcc-f6e1-46ad-8203-039b8b86fc39",
+                "name": "tag-1",
+                "created_at": "2021-04-21T22:45:27.140Z",
+                "updated_at": "2021-04-21T22:45:27.140Z"
+            }
+        ],
+        "repository": {
+            "id": "30565db7-52e9-4423-be0b-7bb9d5fe3b61",
+            "github_id": "172471552",
+            "name": "aliyr/Nodejs-Developer-Roadmap",
+            "description": "A Developer Roadmap to becoming a Node.js developer in 2019",
+            "language": null,
+            "url": "https://github.com/aliyr/Nodejs-Developer-Roadmap",
+            "created_at": "2021-04-19T03:41:48.717Z",
+            "updated_at": "2021-04-19T03:41:48.717Z"
+        }
+    }
+}
+```
