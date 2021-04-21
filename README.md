@@ -84,7 +84,7 @@ By header, it's possible back to home, and then the user is unsynchronized and a
 
 # Back-end
 ## Overview
-The back-end was designed by the [model entities](assets/model-entities.png). 
+The back-end was designed by the [model entities](assets/entities.png). 
 The structure code the most part was architected following [Clean Arquitecture by Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
 If you wanna play with API in your machine, the postman collection is available [here](assets/collection.json).
