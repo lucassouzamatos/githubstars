@@ -15,6 +15,9 @@ export default function Routes() {
     if (store.auth.data.token) {
       history.push('/repositories');
     }
+    if (!store.auth.data.token) {
+      history.push('/');
+    }
   }, [store.auth]);
 
   return (

@@ -9,6 +9,7 @@ const Types = {
   SET: '@Auth/SET',
   LOADING: '@Auth/LOADING',
   ERROR: '@Auth/ERROR',
+  LOGOUT: '@Auth/LOGOUT',
 };
 
 function reducer(state = defaultState, action: Action): State {
@@ -32,6 +33,8 @@ function reducer(state = defaultState, action: Action): State {
         error: undefined,
         loading: action.payload.loading as boolean,
       };
+    case Types.LOGOUT:
+      return defaultState;
     default:
       return state;
   }
@@ -42,6 +45,12 @@ const Actions = {
     return {
       type: Types.SYNC,
       payload: { username },
+    };
+  },
+  logout() {
+    return {
+      type: Types.LOGOUT,
+      payload: {},
     };
   },
   set(user: Item) {
