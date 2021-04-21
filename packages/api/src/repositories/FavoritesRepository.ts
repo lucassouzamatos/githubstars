@@ -52,7 +52,10 @@ export default class FavoritesRepository implements IFavoritesRepository {
       .insert()
       .into(Favorite)
       .values(FavoritesRepository.normalizeValues(user, repositories))
-      .orUpdate({ conflict_target: ['username'] })
+      .orUpdate({
+        conflict_target: ['user_id', 'repository_id'],
+        overwrite: ['user_id', 'repository_id'],
+      })
       .returning('*')
       .execute();
 
