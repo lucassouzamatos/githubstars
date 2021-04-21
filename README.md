@@ -1,15 +1,24 @@
-# githubstars
+# Githubstars
 
 ## Overview
 This project is a challenge for selective process to Brainn company. The specification was pre defined for the test, and can be checked [here](https://github.com/brainnco-exs/readme-developer).
 
 ## Documentation sections
-[Web](#front-end)
+[Front-end](#front-end)
 
 ## Installation
 You should start directly by yarn or by docker.
 
 ### You prefer docker
+If you wanna use with docker enviroment, just run:
+
+```
+docker-composer up --build
+```
+
+The front-end will runs in localhost and server in localhost/api. If you wish to use the pgAdmin for database management, just access by localhost:16543.
+
+The PostgreSQL database will running by port 54443 with databases githubstars and githubstars_tests.
 
 ### You prefer yarn
 First, it's necessary that the [PostgreSQL](https://www.postgresql.org/) is running in your machine. 
