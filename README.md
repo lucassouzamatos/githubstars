@@ -70,13 +70,13 @@ For installation, you could follow the instructions in the main readme.
 
 ## Funcionality demonstrations
 ### Home
-The home page has a form with user input for their username in Github. After the submit form, the page should syncronize user and redirect to list of repositories starred.
+The home page has a form with user input for their username in Github. After the submit form, the page should syncronize user and redirect to list of repositories starred. An example must be viewed [here](assets/sync.gif).
 
 ### List
-The list page has a table with a limited result from starred repositories from github. On the page it's possible search repositories for your tags and with "edit" action is possible links tags in repositories.
+The list page has a table with a limited result from starred repositories from github. On the page it's possible search repositories for your tags and with "edit" action is possible links tags in repositories. An example must be viewed [here](assets/search.gif).
 
 ### Link tags by modal
-With the modal of tags is possible to define the tags for the link, it must be inserted separated by a comma, and the platform should realize the all work for separate it.
+With the modal of tags is possible to define the tags for the link, it must be inserted separated by a comma, and the platform should realize the all work for separate it. An example must be viewed [here](assets/add-tag.gif).
 
 ### Header
-By header, it's possible back to home, and then the user is unsynchronized and after this, is possible to synchronize again with any user.
+By header, it's possible back to home, and then the user is unsynchronized and after this, is possible to synchronize again with any user. An example must be viewed [here](assets/unsync.gif).
