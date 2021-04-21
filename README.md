@@ -68,7 +68,7 @@ The front-end project was inspired in wireframes from challenge, and can be chec
 ## Installation
 For installation, you could follow the instructions in the main readme.
 
-## Funcionality demonstrations
+## Functionality demonstrations
 ### Home
 The home page has a form with user input for their username in Github. After the submit form, the page should syncronize user and redirect to list of repositories starred. An example must be viewed [here](assets/sync.gif).
 
