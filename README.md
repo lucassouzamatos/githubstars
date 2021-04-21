@@ -3,10 +3,15 @@
 ## Overview
 This project is a challenge for selective process to Brainn company. The specification was pre defined for the test, and can be checked [here](https://github.com/brainnco-exs/readme-developer).
 
+## Documentation sections
+[Web](#front-end)
+
 ## Installation
 You should start directly by yarn or by docker.
 
-### You choose yarn
+### You prefer docker
+
+### You prefer yarn
 First, it's necessary that the [PostgreSQL](https://www.postgresql.org/) is running in your machine. 
 
 The enviroment file must be wrote with your local database:
@@ -46,3 +51,23 @@ yarn workspace api test
 yarn workspace web test
 ```
 
+# Front-end
+
+## Overview
+The front-end project was inspired in wireframes from challenge, and can be checked [here](https://github.com/brainnco-exs/readme-developer/tree/master/wireframes). From wireframes, was designed new screens that can viewed by [Figma shared](https://www.figma.com/file/fIIDnuMBiZ9ejJWsHCGxoP/Githubstars?node-id=0%3A1).
+
+## Installation
+For installation, you could follow the instructions in the main readme.
+
+## Funcionality demonstrations
+### Home
+The home page has a form with user input for their username in Github. After the submit form, the page should syncronize user and redirect to list of repositories starred.
+
+### List
+The list page has a table with a limited result from starred repositories from github. On the page it's possible search repositories for your tags and with "edit" action is possible links tags in repositories.
+
+### Link tags by modal
+With the modal of tags is possible to define the tags for the link, it must be inserted separated by a comma, and the platform should realize the all work for separate it.
+
+### Header
+By header, it's possible back to home, and then the user is unsynchronized and after this, is possible to synchronize again with any user.
