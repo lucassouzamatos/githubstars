@@ -2,7 +2,11 @@
   "name": "githubstars-workspace",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": [
+      "**/typeorm/**",
+      "**/typeorm"
+    ]
+  }
 }
