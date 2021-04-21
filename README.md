@@ -54,6 +54,8 @@ yarn workspace api dev:server
 yarn workspace web start
 ```
 
+The front-end will runs in localhost:3000 and server in localhost:3333/api.
+
 ## Tests
 If you wish to run the tests, just run:
 ```
