@@ -22,12 +22,18 @@ export default class TagsRepository implements ITagsRepository {
   }
 
   private async detach(created: Tag[], favorite: IFavorite) {
-    await this.repository
+    const query = this.repository
       .createQueryBuilder()
       .delete()
-      .where('favorite_id = :favorite', { favorite: favorite.id })
-      .where(`id NOT IN (:...values)`, { values: created.map((tag) => tag.id) })
-      .execute();
+      .where('favorite_id = :favorite', { favorite: favorite.id });
+
+    if (created.length) {
+      query.andWhere(`id NOT IN (:...values)`, {
+        values: created.map((tag) => tag.id),
+      });
+    }
+
+    await query.execute();
   }
 
   public async attach(tags: string[], favorite: IFavorite): Promise<Tag[]> {

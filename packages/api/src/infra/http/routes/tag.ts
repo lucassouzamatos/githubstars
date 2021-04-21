@@ -13,7 +13,7 @@ router.post(
   celebrate({
     [Segments.BODY]: {
       favorite_id: Joi.string().required(),
-      tags: Joi.string().required(),
+      tags: Joi.string().allow(''),
     },
   }),
   TagController.attach

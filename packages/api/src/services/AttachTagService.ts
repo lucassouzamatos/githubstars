@@ -35,7 +35,10 @@ export default class AttachTagService {
       throw new NotFoundError('The favorite specified not exists');
     }
 
-    const splitted = tags.split(',').map((tag) => tag.trim());
+    const splitted = tags
+      .split(',')
+      .map((tag) => tag.trim())
+      .filter((tag) => Boolean(tag));
     await this.tagsRepository.attach(splitted, favorite);
     return this.favoritesRepository.findById(favorite_id, user_id);
   }
