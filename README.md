@@ -21,6 +21,14 @@ The front-end will runs in localhost and server in localhost/api. If you wish to
 
 The PostgreSQL database will running by port 54443 with databases githubstars and githubstars_tests.
 
+## Tests
+For the tests by docker-compose, it's necessary that docker-compose is up.
+If you wish to run the tests, just run:
+```
+docker-compose exec api yarn workspace api test
+docker-compose exec web yarn workspace web test
+```
+
 ### You prefer yarn
 First, it's necessary that the [PostgreSQL](https://www.postgresql.org/) is running in your machine. 
 
