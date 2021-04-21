@@ -15,5 +15,8 @@ export function localCache(
     set(key: string, value: unknown) {
       localStorage.setItem(localCacheKey(key), JSON.stringify(value));
     },
+    clear() {
+      localStorage.clear();
+    },
   };
 }
