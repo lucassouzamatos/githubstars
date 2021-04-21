@@ -53,7 +53,7 @@ The enviroment file must be wrote with your local database:
 }
 ```
 
-The env's field "database" specifies the database name, and it must be created in your PostgreSQL. Also the database with suffix "_tests" must be created too, if you wish to run the unit tests
+The env's field "database" specifies the database name, and it must be created in your PostgreSQL. Also the database with suffix "_tests" must be created too, e.g., "githubstars_tests". And then, if you wish to run the unit tests
 
 On the root folder, runs:
 ```
