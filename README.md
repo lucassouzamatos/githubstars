@@ -4,8 +4,8 @@
 This project is a challenge for selective process to Brainn company. The specification was pre defined for the test, and can be checked [here](https://github.com/brainnco-exs/readme-developer).
 
 ## Documentation sections
-[Front-end](#front-end)
-[Back-end](#back-end)
+- [Front-end](#front-end)
+- [Back-end](#back-end)
 
 ## Installation
 You should start directly by yarn or by docker.
