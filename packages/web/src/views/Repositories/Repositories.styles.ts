@@ -31,7 +31,7 @@ export const ContentWrapper = styled.div`
 
 export const TagWrapper = styled.div`
   display: flex;
-  max-width: 400px;
+  width: 400px;
   flex-wrap: wrap;
 
   > div {

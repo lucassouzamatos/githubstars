@@ -1,4 +1,5 @@
 import { Input, Button, Tag } from 'components';
+import { useForm } from 'react-hook-form';
 import {
   Wrapper,
   Overlay,
@@ -10,34 +11,67 @@ import {
   ButtonClose,
 } from './Modal.styles';
 
-type ModalProps = {
-  opened: boolean;
-  onClose: () => void;
+type DescriptionProps = {
+  title?: string;
+  subtitle?: string;
 };
 
-export default function Modal({ opened, onClose }: ModalProps) {
-  if (!opened) {
-    return null;
-  }
+type TagProps = {
+  id: string;
+  name: string;
+};
+
+type ModalProps = {
+  onClose: () => void;
+  onCreateTags: (tags: string) => void;
+  onRemoveTag: (tag: string) => void;
+  opened: boolean;
+  title: string;
+  description?: DescriptionProps;
+  tags?: TagProps[];
+};
+
+type FormData = {
+  tags: string;
+};
+
+export default function Modal({
+  onClose,
+  onRemoveTag,
+  onCreateTags,
+  opened,
+  title,
+  description,
+  tags = [],
+}: ModalProps) {
+  if (!opened) return null;
+
+  const { register, handleSubmit, reset } = useForm<FormData>();
+  const onSubmit = handleSubmit((data) => {
+    onCreateTags(data.tags);
+    reset();
+  });
 
   return (
     <Overlay>
       <Wrapper>
         <Header>
-          <Title>editing kubernetes</Title>
+          <Title>{title}</Title>
           <ButtonClose onClick={onClose} />
         </Header>
         <Description>
-          <span>tags</span>
-          <span>you could type tags separated by comma</span>
+          {description?.title && <span>{description?.title}</span>}
+          {description?.subtitle && <span>{description?.subtitle}</span>}
         </Description>
         <Tags>
-          <Tag close>very nice! 👍</Tag>
-          <Tag close>elixir 🎉</Tag>
-          <Tag close>django</Tag>
+          {tags.map((tag) => (
+            <Tag key={tag.id} onRemove={() => onRemoveTag(tag.name)} close>
+              {tag.name}
+            </Tag>
+          ))}
         </Tags>
-        <InputTags>
-          <Input width="100%" placeholder="add tags" />
+        <InputTags onSubmit={onSubmit}>
+          <Input {...register('tags')} width="100%" placeholder="add tags" />
           <Button text="add" />
         </InputTags>
       </Wrapper>

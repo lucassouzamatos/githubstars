@@ -8,6 +8,9 @@ export const Types = {
   ADD: '@Repositories/ADD',
   SET: '@Repositories/SET',
   GET: '@Repositories/GET',
+  INSERT_TAGS: '@Repositories/INSERT_TAGS',
+  REMOVE_TAG: '@Repositories/REMOVE_TAG',
+  UPDATE: '@Repositories/UPDATE',
 };
 
 function reducer(state = defaultState, action: Action): State {
@@ -21,6 +24,13 @@ function reducer(state = defaultState, action: Action): State {
       return {
         ...state,
         data: action.payload.items ?? state.data,
+      };
+    case Types.UPDATE:
+      return {
+        ...state,
+        data: state.data.map((item) =>
+          item.id === action.payload.item?.id ? action.payload.item : item
+        ),
       };
     default:
       return state;
@@ -44,6 +54,24 @@ const Actions = {
     return {
       type: Types.SET,
       payload: { items },
+    };
+  },
+  update(item: Item) {
+    return {
+      type: Types.UPDATE,
+      payload: { item },
+    };
+  },
+  insertTags(tags: string, repository: Item) {
+    return {
+      type: Types.INSERT_TAGS,
+      payload: { tags, repository },
+    };
+  },
+  removeTag(tag: string, repository: Item) {
+    return {
+      type: Types.REMOVE_TAG,
+      payload: { tag, repository },
     };
   },
 };

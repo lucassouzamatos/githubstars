@@ -46,7 +46,7 @@ export const Description = styled.div`
   }
 `;
 
-export const InputTags = styled.div`
+export const InputTags = styled.form`
   display: flex;
 
   input {
