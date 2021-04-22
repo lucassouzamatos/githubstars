@@ -28,11 +28,15 @@ export async function insertTags(payload, dispatch) {
 }
 
 export async function get(payload, dispatch) {
-  const response = await request.get('/favorites');
-  const json = await response.json();
+  try {
+    const response = await request.get('/favorites');
+    const json = await response.json();
 
-  const items = transformItems(json.data);
-  dispatch(RepositoryActions.set(items));
+    const items = transformItems(json.data);
+    dispatch(RepositoryActions.set(items));
+  } catch {
+    dispatch(RepositoryActions.set([]));
+  }
 }
 
 type RepositoryResponseItem = {
