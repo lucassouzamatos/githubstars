@@ -1,0 +1,15 @@
+{
+  "username": "postgres",
+  "password": "postgres",
+  "type": "postgres",
+  "name": "default",
+  "host": "localhost",
+  "port": 5432,
+  "database": "githubstars",
+  "entities": ["./src/entities/**/*.ts"],
+  "migrations": ["./src/infra/typeorm/migrations/*.ts"],
+  "migrationsRun": true,
+  "cli": {
+    "migrationsDir": "./src/infra/typeorm/migrations"
+  }
+}
